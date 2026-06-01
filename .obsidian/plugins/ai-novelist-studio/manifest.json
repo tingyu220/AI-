@@ -3,8 +3,9 @@
   "name": "AI 小说工作室",
   "version": "1.1.0",
   "minAppVersion": "0.15.0",
-  "description": "AI驱动的长篇小说写作助手，一键生成章节、管理人物伏笔、知识库与统计",
-  "author": "AI Novelist Studio",
-  "authorUrl": "",
+  "description": "AI驱动的长篇小说写作助手——键生成章节、管理人物伏笔、知识库与统计",
+  "author": "tingyu220",
+  "authorUrl": "https://github.com/tingyu220/AI-",
+  "fundingUrl": "",
   "isDesktopOnly": false
 }
