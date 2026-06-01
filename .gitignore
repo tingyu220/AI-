@@ -1,0 +1,16 @@
+# API Key 和敏感配置
+.env
+.obsidian/plugins/ai-novelist-studio/data.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Obsidian
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# 系统文件
+Thumbs.db
+.DS_Store

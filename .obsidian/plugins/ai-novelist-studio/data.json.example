@@ -1,0 +1,11 @@
+{
+  "apiKey": "",
+  "aiModel": "deepseek-chat",
+  "novelsRootPath": "NovelProject/Novels",
+  "temperature": 0.7,
+  "enableContinuityCheck": true,
+  "maxContextChapters": 3,
+  "maxTokens": 4096,
+  "sceneDiversity": 0.5,
+  "autoUpdateOutline": true
+}

@@ -1,0 +1,568 @@
+/* styles.css — AI 小说工作室插件样式 */
+/* 所有颜色使用 CSS 变量，跟随 Obsidian 主题 */
+
+/* ============================================================
+   根容器
+   ============================================================ */
+
+.ai-ns-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ============================================================
+   顶部工具栏
+   ============================================================ */
+
+.ai-ns-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    flex-shrink: 0;
+}
+
+.ai-ns-toolbar-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.ai-ns-toolbar select {
+    flex: 1;
+    max-width: 250px;
+    padding: 4px 8px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-normal);
+    font-size: 14px;
+}
+
+/* ============================================================
+   标签页导航
+   ============================================================ */
+
+.ai-ns-tab-bar {
+    display: flex;
+    border-bottom: 2px solid var(--background-modifier-border);
+    flex-shrink: 0;
+    padding: 0 16px;
+}
+
+.ai-ns-tab-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+}
+
+.ai-ns-tab-btn:hover {
+    color: var(--text-normal);
+    background: var(--background-modifier-hover);
+}
+
+.ai-ns-tab-btn.is-active {
+    color: var(--text-accent);
+    border-bottom-color: var(--text-accent);
+    font-weight: 600;
+}
+
+/* 子标签页 */
+.ai-ns-subtab-bar {
+    display: flex;
+    padding: 8px 16px;
+    gap: 4px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    flex-shrink: 0;
+}
+
+.ai-ns-subtab-btn {
+    padding: 6px 14px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.ai-ns-subtab-btn:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.ai-ns-subtab-btn.is-active {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    font-weight: 600;
+}
+
+/* ============================================================
+   标签页内容区
+   ============================================================ */
+
+.ai-ns-tab-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.ai-ns-subtab-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ============================================================
+   统计卡片
+   ============================================================ */
+
+.ai-ns-card-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.ai-ns-stat-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    transition: box-shadow 0.2s ease;
+}
+
+.ai-ns-stat-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ai-ns-stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-accent);
+    line-height: 1.2;
+}
+
+.ai-ns-stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ============================================================
+   区块
+   ============================================================ */
+
+.ai-ns-section {
+    margin-bottom: 20px;
+}
+
+.ai-ns-section h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: var(--text-normal);
+}
+
+/* ============================================================
+   写作目标区
+   ============================================================ */
+
+.ai-ns-goal-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.ai-ns-goal-textarea {
+    flex: 1;
+    min-height: 70px;
+    padding: 10px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    color: var(--text-normal);
+    font-size: 14px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.ai-ns-idea-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 90px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.ai-ns-idea-btn:hover {
+    background: var(--background-modifier-hover);
+    border-color: var(--interactive-accent);
+    color: var(--text-accent);
+}
+
+.ai-ns-idea-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+/* ============================================================
+   高级选项折叠
+   ============================================================ */
+
+.ai-ns-advanced-header {
+    padding: 10px 0;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    user-select: none;
+    border-top: 1px solid var(--background-modifier-border);
+    border-bottom: 1px solid var(--background-modifier-border);
+    margin-bottom: 8px;
+}
+
+.ai-ns-advanced-header:hover {
+    color: var(--text-normal);
+}
+
+.ai-ns-advanced-toggle {
+    font-size: 12px;
+}
+
+.ai-ns-advanced-body {
+    padding: 8px 0;
+}
+
+/* ============================================================
+   操作按钮
+   ============================================================ */
+
+.ai-ns-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.ai-ns-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-normal);
+    transition: all 0.2s ease;
+    user-select: none;
+    text-align: center;
+}
+
+.ai-ns-btn:hover {
+    background: var(--background-modifier-hover);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ai-ns-btn-primary {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border-color: var(--interactive-accent);
+    font-weight: 600;
+}
+
+.ai-ns-btn-primary:hover {
+    background: var(--interactive-accent-hover);
+}
+
+.ai-ns-btn-small {
+    padding: 4px 12px;
+    font-size: 12px;
+}
+
+.ai-ns-btn-resolve {
+    background: var(--color-green);
+    color: var(--text-on-accent);
+    border-color: var(--color-green);
+}
+
+/* ============================================================
+   实时进度日志
+   ============================================================ */
+
+.ai-ns-log-area {
+    background: var(--background-primary-alt);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    padding: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: var(--font-monospace);
+}
+
+.ai-ns-log-text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.ai-ns-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.ai-ns-log-header h4 {
+    margin: 0;
+}
+
+/* ============================================================
+   表格
+   ============================================================ */
+
+.ai-ns-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.ai-ns-table th,
+.ai-ns-table td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.ai-ns-table th {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    background: var(--background-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.ai-ns-table tr:hover td {
+    background: var(--background-modifier-hover);
+}
+
+.ai-ns-table-btn {
+    padding: 2px 10px;
+    margin: 0 2px;
+    font-size: 12px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.ai-ns-table-btn:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+/* ============================================================
+   知识库工具栏
+   ============================================================ */
+
+.ai-ns-kb-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.ai-ns-search-input {
+    flex: 1;
+    max-width: 250px;
+    padding: 6px 10px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    color: var(--text-normal);
+    font-size: 13px;
+}
+
+.ai-ns-search-input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+/* ============================================================
+   伏笔状态标签
+   ============================================================ */
+
+.ai-ns-status-resolved {
+    color: var(--color-green);
+    font-weight: 500;
+}
+
+.ai-ns-status-pending {
+    color: var(--color-orange);
+    font-weight: 500;
+}
+
+/* ============================================================
+   预览区
+   ============================================================ */
+
+.ai-ns-preview {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.ai-ns-markdown-preview {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.ai-ns-markdown-preview h2 { font-size: 20px; margin: 16px 0 8px; }
+.ai-ns-markdown-preview h3 { font-size: 17px; margin: 14px 0 6px; }
+.ai-ns-markdown-preview h4 { font-size: 15px; margin: 10px 0 4px; }
+.ai-ns-markdown-preview p { margin: 8px 0; }
+.ai-ns-markdown-preview ul { padding-left: 20px; margin: 8px 0; }
+.ai-ns-markdown-preview li { margin: 2px 0; }
+.ai-ns-markdown-preview code { background: var(--background-primary); padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+.ai-ns-markdown-preview pre { background: var(--background-primary); padding: 12px; border-radius: 6px; overflow-x: auto; }
+
+/* ============================================================
+   CSS 条形图
+   ============================================================ */
+
+.ai-ns-bar-chart {
+    padding: 8px 0;
+}
+
+.ai-ns-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.ai-ns-bar-label {
+    width: 70px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.ai-ns-bar-outer {
+    flex: 1;
+    height: 22px;
+    background: var(--background-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ai-ns-bar-inner {
+    height: 100%;
+    background: var(--interactive-accent);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    min-width: 2px;
+}
+
+.ai-ns-bar-value {
+    width: 60px;
+    font-size: 12px;
+    color: var(--text-normal);
+    flex-shrink: 0;
+    font-weight: 500;
+}
+
+/* ============================================================
+   空状态提示
+   ============================================================ */
+
+.ai-ns-empty-hint {
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 14px;
+}
+
+/* ============================================================
+   模态框
+   ============================================================ */
+
+.ai-ns-modal-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.ai-ns-idea-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ai-ns-idea-card:hover {
+    background: var(--background-modifier-hover);
+    border-color: var(--interactive-accent);
+}
+
+.ai-ns-idea-title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: var(--text-accent);
+}
+
+.ai-ns-idea-preview {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   响应式：窄屏时卡片列数减少
+   ============================================================ */
+
+@media (max-width: 480px) {
+    .ai-ns-card-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
