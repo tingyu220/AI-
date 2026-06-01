@@ -6,34 +6,22 @@ on:
       - '*'
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        working-directory: .obsidian/plugins/ai-novelist-studio
-        run: npm ci
-
-      - name: Build
-        working-directory: .obsidian/plugins/ai-novelist-studio
-        run: npm run build
-
-      - name: Package plugin
+      - name: Package plugin files
         run: |
-          mkdir release
-          cp .obsidian/plugins/ai-novelist-studio/main.js release/
-          cp .obsidian/plugins/ai-novelist-studio/manifest.json release/
-          cp .obsidian/plugins/ai-novelist-studio/styles.css release/
+          mkdir dist
+          cp .obsidian/plugins/ai-novelist-studio/main.js dist/
+          cp .obsidian/plugins/ai-novelist-studio/manifest.json dist/
+          cp .obsidian/plugins/ai-novelist-studio/styles.css dist/
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: release/*
+          files: dist/*
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
