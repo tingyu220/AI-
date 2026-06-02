@@ -1,10 +1,9 @@
-# AI Writing Assistant (AI 写作助手)
+# AI Novelist Studio
 
-AI-powered long-form novel writing workbench with Obsidian plugin + Python scripts.
+AI-powered novel writing assistant with DeepSeek integration — one-click chapter generation, character management, and foreshadowing tracking.
 
-## AI Novelist Studio - Obsidian Plugin
+## Features
 
-An Obsidian plugin that provides a sidebar panel for AI-assisted novel writing:
 - **One-click writing**: Auto-build context -> Generate chapter via DeepSeek API -> Update characters & hooks
 - **Continuity**: Reads previous chapter ending to ensure seamless plot & emotional flow
 - **Scene diversity**: Analyzes scene types to avoid repetitive chapter structures
